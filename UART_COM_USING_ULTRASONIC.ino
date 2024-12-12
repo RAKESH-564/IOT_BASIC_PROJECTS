@@ -17,15 +17,17 @@ void loop(){
   digitalWrite(trig,LOW);
 
   duration =pulseIn(echo,HIGH);
-  distance=duration* 0.0344 / 2;
-  Serial.print(distance);
+  distance=(duration* 0.0344) / 2;
+  if (distance <20){
+    Serial.print("HELLO");
+  }
   delay(2000);
 }
 //=========================================RX CODE====================
 void setup() {
-  Serial.begin(9600); 
+  Serial.begin(9600);
+  Serial.println("UART Receiver Ready");
 }
-
 void loop() {
   // Check if data is available to read
   if (Serial.available() > 0) {
